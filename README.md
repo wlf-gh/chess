@@ -1,1 +1,1 @@
-README for my chess project
+README for my chess project, which will be in C++ hopefully.
