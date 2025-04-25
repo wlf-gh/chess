@@ -1,12 +1,13 @@
-#include <string>
+#include <iostream>
 
 // Constants for piece types
-int const PAWN = 0;
-int const KNIGHT = 1;
-int const BISHOP = 2;
-int const ROOK = 3;
-int const QUEEN = 4;
-int const KING = 5;
+int const ES = 0; // Empty square (no piece)
+int const PAWN = 1;
+int const KNIGHT = 2;
+int const BISHOP = 3;
+int const ROOK = 4;
+int const QUEEN = 5;
+int const KING = 6;
 
 // Constants for board file letters
 int const A = 0;
@@ -18,26 +19,35 @@ int const F = 5;
 int const G = 6;
 int const H = 7;
 
-// The class for chess pieces
-class Piece {
+// Function that prints out chess board representation for testing
+void print_board(int board[8][8]) {
+
+	for(int i = 0; i < 8; i++) {
 	
-	public:
-		int type;
-		int rank_pos;
-		int file_pos;
-};
+		for(int j = 0; j < 8; j++) {
+		
+			std::cout << board[i][j] << " ";
+		}
 
-// Intialize the chess board
-void init_board() {
-
-	Piece white_a_pawn;
-	white_a_pawn.type = PAWN;
-	white_a_pawn.rank_pos = 2;
-	white_a_pawn.file_pos = A;
+		std::cout << "\n";
+	}
 }
 
 int main() {
 
-	init_board();
+	// Initialize the chess board
+	int board[8][8] = {
+	
+		{ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK},
+		{PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN},
+		{ES, ES, ES, ES, ES, ES, ES, ES},
+		{ES, ES, ES, ES, ES, ES, ES, ES},
+		{ES, ES, ES, ES, ES, ES, ES, ES},
+		{ES, ES, ES, ES, ES, ES, ES, ES},
+		{PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN},
+		{ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK}
+	};
+
+	print_board(board);
 	return 0;
 }
