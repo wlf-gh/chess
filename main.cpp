@@ -48,6 +48,7 @@ int valid_move(std::string move, int* board) {
 }
 
 // Take a move that is already confirmed to be valid and update/return the board accordingly
+// FORMULA: ((8 - RANK) * 8 ) + FILE = BOARD INDEX
 int *make_move(std::string move, int* board) {
 
 	return board;
@@ -62,6 +63,10 @@ int main() {
 	int game_running = 1;
 	int to_move = WHITE;
 
+	// Set up variables that will be populated with each entered move
+	int piece, file, rank;
+
+	// TODO: Add end condition for loop (currently infinite)
 	while(game_running) {
 	
 		// Check whose turn it is and prompt accordingly
@@ -73,16 +78,11 @@ int main() {
 			std::cout << "(Black) Enter move: ";
 		}
 
-		std::string move;
-		std::cin >> move;
-
-		if(move == "quit") {
-			game_running = 0;
-		} else {
+		// Get the move from user input
+		std::cin >> piece >> file >> rank;
 		
-			std::cout << "Your move was " << move << "\n";
-			to_move = (to_move + 1) % 2;
-		}
+		std::cout << "Your move was Piece: " << piece << "File: " << file << "Rank: " << rank << "\n";
+		to_move = (to_move + 1) % 2;
 	}
 
 	//Free the allocated board array
